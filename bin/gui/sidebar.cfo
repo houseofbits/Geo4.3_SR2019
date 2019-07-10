@@ -1,0 +1,116 @@
+GUILayer={  
+  pos=60,490;//487;
+  size=100,480;
+  style="layerShadow";
+
+/*
+    GUIButton={
+      name="selAll";
+      title="Sel.all";
+      pos=0,230;
+      size=100,20;
+      style="buttonSmall";      
+    } 
+    GUIButton={
+      name="selWing";
+      title="Sel.wing";
+      pos=0,205;
+      size=100,20;
+      style="buttonSmall";      
+    }             
+    GUIButton={
+      name="selRing";
+      title="Sel.ring";
+      pos=0,180;
+      size=100,20;
+      style="buttonSmall";    
+    }
+    GUIButton={
+      name="selRingOdd";
+      title="Sel.ring odd";
+      pos=0,155;
+      size=100,20;
+      style="buttonSmall";    
+    }  
+*/
+
+    GUIButton={
+      name="keySet";
+      title="Set key";
+      pos=0,230;
+      size=100,20;
+      style="buttonSmall";    
+    } 
+    GUIButton={
+      name="keyDelete";
+      title="Delete key";
+      pos=0,205;
+      size=100,20;
+      style="buttonSmall";    
+    } 
+    GUIButton={
+      name="keyNext";
+      title="Next key";
+      pos=0,180;
+      size=100,20;
+      style="buttonSmall";    
+    }          
+    GUIButton={
+      name="keyPrev";
+      title="Prev key";
+      pos=0,155;
+      size=100,20;
+      style="buttonSmall";    
+    }
+    GUIButton={
+      name="keyEdit";
+      title="Edit key";
+      pos=0,130;
+      size=100,20;
+      style="buttonSmall";    
+    }
+    GUIButton={
+      name="timelineSettings";
+      title="Range";
+      pos=0,105;
+      size=100,20;
+      style="buttonSmall";    
+    } 
+    GUIButton={
+      name="buttonExpandWindow";
+      title="Expand";
+      pos=0,80;
+      size=100,20;
+      style="buttonSmall";    
+    } 
+
+    GUIButton={
+      name="saveData";
+      title="Save";
+      pos=0,-65;
+      size=100,20;
+      style="buttonSmall";    
+    } 
+    GUIButton={
+      name="buttonResourcesWindow";
+      title="Load";
+      pos=0,-90;
+      size=100,20;
+      style="buttonSmall";    
+    } 
+    GUIButton={
+      name="buttonNewResource";
+      title="New";
+      pos=0,-115;
+      size=100,20;
+      style="buttonSmall";    
+    }
+    GUIButton={
+      name="buttonInsertResourcesWindow";
+      title="Insert";
+      pos=0,-140;
+      size=100,20;
+      style="buttonSmall";    
+    }         
+
+}

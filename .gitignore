@@ -1,0 +1,10 @@
+Lib/
+Obj/
+.vs/
+Geo4Engine/Debug/
+Geo4Engine/Release/
+bin/*
+!bin/style/
+!bin/gui/
+!bin/savedResources/
+!bin/conf.cfo

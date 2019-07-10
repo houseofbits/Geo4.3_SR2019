@@ -1,0 +1,199 @@
+GUIStyle={
+  
+  include="style/button.cfo";
+  include="style/window.cfo";  
+  include="style/list.cfo";
+ 
+  textDefault={
+    fontName="fonts/exo1/Exo-SemiBold.ttf";
+    fontSize=13;
+    fontColor=1,0.5,0,1;
+    fontShadowPosition=0,-2;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=20;
+  }
+  textFilename={
+    fontName="fonts/exo1/Exo-Medium.ttf";
+    fontSize=10;
+    fontColor=0.7,0.7,0.7,1;
+    fontShadowPosition=0,-3;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=15;
+    textAlign=LEFT;
+  } 
+  textSubscipt={
+    fontName="fonts/exo1/Exo-Medium.ttf";
+    fontSize=10;
+    fontColor=0.6,0.6,0.6,1;
+    fontShadowPosition=0,-3;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=15;
+  }  
+  textGreen={
+    fontName="fonts/exo1/Exo-Black.ttf";
+    fontSize=18;
+    fontColor=0.2,1,0.2,1;
+    fontShadowPosition=0,-3;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=25;
+  }  
+  layer={
+    radius=5;
+    backgroundGradientColor={
+      1=0.498, 0.545, 0.6, 0.2;
+      0=0.737, 0.756, 0.780, 0.3;
+    }
+  }
+  layerShadow={
+    radius=5;
+    shadowSize=5;
+    shadowHardness=0.5;
+    shadowPosition=0,-1;
+    shadowColor=0,0,0,0.4; 
+  }
+
+  inputText={
+    fontName="fonts/exo1/Exo-SemiBold.ttf";
+    fontSize=12;
+    fontColor=0.376, 0.450, 0.505,1;
+    fontShadowPosition=0,-2;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=25;
+    backgroundGradientColor={
+      0=0.066, 0.101, 0.137, 0.6;
+      1=0.129, 0.203, 0.262, 0.8;
+    }    
+    radius=5;
+    borderSize=1;
+    borderColor=0.541, 0.701, 0.854,0.2;  
+    textAlign=LEFT;
+    textPadding=5,0,0,0;
+  }  
+  inputTextActive={
+    fontName="fonts/exo1/Exo-SemiBold.ttf";
+    fontSize=12;
+    fontColor=1,1,1,0.8;
+    fontShadowPosition=0,-2;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=25;
+    backgroundGradientColor={
+      0=0.066, 0.101, 0.137, 0.6;
+      1=0.129, 0.203, 0.262, 0.8;
+    }    
+    radius=5;
+    borderSize=1;
+    borderColor=1,1,1,0.5;
+    shadowSize=5;
+    shadowHardness=0.5;
+    shadowPosition=0,-1;
+    shadowColor=0.105, 0.176, 0.231,0.4;     
+    textAlign=LEFT;
+    textPadding=5,0,0,0;    
+  }  
+
+  graph={
+    fontName="fonts/exo1/Exo-SemiBold.ttf";
+    fontSize=10;
+    fontColor=1,1,1,1;
+    fontShadowPosition=0,-2;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=14;    
+    textAlign=RIGHT;
+    textVerticalAlign=BOTTOM;
+    graphLineColor=0.5,0.5,0.5,1;
+    graphDividerLineColor=0.5,0.5,0.5,1;  
+    graphRefLineColor=1,1,1,1;    
+    graphRefLineStyle=DOTTED;
+    graphDataLineColor=0,1,0,1;
+    graphDataLineColor2=0.5,0.5,1,1;    
+    backgroundGradientColor={
+      1=0.498, 0.545, 0.6, 0.2;
+      0=0.737, 0.756, 0.780, 0.3;
+    }
+  }
+
+
+  layerProgramTitle={
+    radiusBottomLeft=5;
+    radiusBottomRight=5;
+    borderSizeBottom=1;
+    borderSizeLeft=1;
+    borderSizeRight=1;        
+    borderColor=1,1,1,0.3;
+    backgroundGradientColor={
+      0=0.360, 0.458, 0.545, 0.8;
+      1=0.215, 0.270, 0.321, 0.8;
+    }    
+    fontName="fonts/exo1/Exo-SemiBold.ttf";
+    fontSize=11;
+    fontColor=1,1,1,0.7;
+    fontShadowPosition=0,-1.5;
+    fontShadowColor=0,0,0,1;
+    shadowSize=5;
+    shadowHardness=0.5;
+    shadowPosition=0,-1;
+    shadowColor=0,0,0,0.4;  
+  }
+  textProgramName={
+    fontName="fonts/exo1/Exo-Regular.ttf";
+    fontSize=13;
+    fontColor=1,0.5,0,1;
+    fontShadowPosition=0,-2;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=20;
+    textAlign=LEFT;
+    textPadding=10,0,0,0;
+  }
+
+  textDefaultTitle={  
+    fontName="fonts/exo1/Exo-Medium.ttf";
+    fontSize=11;
+    fontColor=1,1,1,0.7;
+    fontShadowPosition=0,-1.5;
+    fontShadowColor=0,0,0,1;
+    textAlign=LEFT;
+    textVerticalAlign=TOP;
+    textPadding=5,0,5,0;
+  }
+
+
+  sliderDefaultPin={
+    radius=5;
+    borderSize=1;
+    borderColor=1,1,1,0.5;
+    shadowSize=5;
+    shadowHardness=0.5;
+    shadowPosition=0,-1;
+    shadowColor=0,0,0,0.3;
+    backgroundGradientColor={
+      1=0.498, 0.545, 0.6, 0.6;
+      0.05=0.854, 0.874, 0.886, 0.5;
+      0=0.737, 0.756, 0.780, 0.5;
+    }
+    fontName="fonts/exo1/Exo-SemiBold.ttf";
+    fontSize=12;
+    fontColor=0,0,0,1;
+    fontShadowPosition=0,-1;
+    fontShadowColor=1,1,1,0.7;
+  }
+  sliderDefault={
+    fontName="fonts/exo1/Exo-SemiBold.ttf";
+    fontSize=12;
+    fontColor=0.376, 0.450, 0.505,1;
+    fontShadowPosition=0,-2;
+    fontShadowColor=0,0,0,0.5;
+    lineHeight=25;
+    backgroundGradientColor={
+      0=0.066, 0.101, 0.137, 0.5;
+      1=0.129, 0.203, 0.262, 0.6;
+    }    
+    radius=5;
+    borderSize=1;
+    borderColor=0.541, 0.701, 0.854,0.2;  
+    textAlign=LEFT;
+    textPadding=5,0,0,0;
+  }
+
+
+
+}

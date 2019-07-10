@@ -1,0 +1,37 @@
+windowDefaultTitle={
+  radiusTopLeft=5;
+  radiusTopRight=5;
+  borderSizeTop=1;
+  borderSizeLeft=1;
+  borderSizeRight=1;        
+  borderColor=1,1,1,0.5;
+  backgroundGradientColor={
+    0=0.360, 0.458, 0.545, 0.8;
+    1=0.215, 0.270, 0.321, 0.8;
+  }    
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=11;
+  fontColor=1,1,1,0.7;
+  fontShadowPosition=0,-1.5;
+  fontShadowColor=0,0,0,1;
+}
+windowDefaultBody={
+  radiusBottomLeft=5;
+  radiusBottomRight=5;
+  borderSizeBottom=1;
+  borderSizeLeft=1;
+  borderSizeRight=1; 
+  borderColor=1,1,1,0.5;
+  backgroundGradientColor={
+    1=0.498, 0.545, 0.6, 0.4;
+    0=0.537, 0.556, 0.580, 0.6;
+    angle=45;
+  }
+}  
+windowDefaultShadow={
+  radius=5;
+  shadowSize=10;
+  shadowHardness=0;
+  shadowPosition=0,-3;
+  shadowColor=0,0,0,0.4;
+} 

@@ -1,0 +1,31 @@
+GUIWindow={
+  visible=1;
+  title="Color";
+  blocking=0;
+  pos=160,170;
+  size=300,330;
+  titleBarSize=25;
+
+  GUIColorPicker={
+      name="colorPicker";
+      pos=0,-25;
+      size=290,270;
+  }
+
+  GUIButton={
+    name="colorBlack";
+    title="K";
+    pos=-135,125;
+    size=20,20;
+    style="buttonSmall";    
+  } 
+  GUIButton={
+    name="colorWhite";
+    title="W";
+    pos=-110,125;
+    size=20,20;
+    style="buttonSmall";    
+  }   
+
+
+}

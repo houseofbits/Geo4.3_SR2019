@@ -1,0 +1,34 @@
+GUILayer={  
+  pos=512,15;
+  size=1024,20;
+  style="layerShadow";
+
+    GUIButton={
+      name="selAll";
+      title="All";
+      pos=-150,0;
+      size=60,20;
+      style="buttonSmall";      
+    } 
+    GUIButton={
+      name="selWing";
+      title="Wing";
+      pos=-85,0;
+      size=60,20;
+      style="buttonSmall";      
+    }             
+    GUIButton={
+      name="selRing";
+      title="Ring";
+      pos=-20,0;
+      size=60,20;
+      style="buttonSmall";    
+    }
+    GUIButton={
+      name="selRingOdd";
+      title="Odd";
+      pos=45,0;
+      size=60,20;
+      style="buttonSmall";    
+    }
+}

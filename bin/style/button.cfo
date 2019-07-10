@@ -1,0 +1,188 @@
+///////////////////////////////////// Default button /////////////////////////////////////////////
+buttonDefaultActive={
+  radius=5;
+  borderSize=1;
+  borderColor=1,1,1,0.5;
+  shadowSize=5;
+  shadowHardness=0.5;
+  shadowPosition=0,-1;
+  shadowColor=0,0,0,0.4;
+  backgroundGradientColor={
+    1=0.498, 0.545, 0.6, 0.6;
+    0.05=0.854, 0.874, 0.886, 0.8;
+    0=0.737, 0.756, 0.780, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=12;
+  fontColor=0,0,0,1;
+  fontShadowPosition=0,-1;
+  fontShadowColor=1,1,1,0.7;
+}
+buttonDefaultHover={
+  radius=5;
+  borderSize=1;
+  borderColor=0.541, 0.701, 0.854,0.2;
+  shadowSize=5;
+  shadowHardness=0.5;
+  shadowPosition=0,-1;
+  shadowColor=0.105, 0.176, 0.231,0.4;
+  backgroundGradientColor={
+    0=0.360, 0.458, 0.545, 0.8;
+    1=0.215, 0.270, 0.321, 0.8;
+    angle=45;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=12;
+  fontColor=1,1,1,0.7;
+  fontShadowPosition=0,-2;
+  fontShadowColor=0,0,0,1;
+}
+buttonDefaultPressed={
+  radius=5;
+  borderSize=1;
+  borderColor=0.058, 0.086, 0.109,0.6;
+  shadowSize=3;
+  shadowHardness=0.5;
+  shadowPosition=0,-1;
+  shadowColor=0,0,0,0.2;
+  backgroundGradientColor={
+    0=0.066, 0.101, 0.137, 0.6;
+    1=0.129, 0.203, 0.262, 0.8;
+    angle=45;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=12;
+  fontColor=0.376, 0.450, 0.505,1;
+  fontShadowPosition=0,-3;
+  fontShadowColor=0,0,0,0.9;
+}
+
+////////////////////////////////////// Button under left ////////////////////////////////////////////
+buttonUnderLeftActive={
+  radiusBottomLeft=5;
+  borderSize=1;
+  borderColor=1,1,1,0.5;
+  backgroundGradientColor={
+    1=0.498, 0.545, 0.6, 0.6;
+    0.05=0.854, 0.874, 0.886, 0.8;
+    0=0.737, 0.756, 0.780, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=13;
+  fontColor=0,0,0,1;
+  fontShadowPosition=0,-1;
+  fontShadowColor=1,1,1,0.7;
+}
+buttonUnderLeftHover={
+  radiusBottomLeft=5;
+  borderSize=1;
+  borderColor=0.541, 0.701, 0.854,0.2;
+  backgroundGradientColor={
+    0=0.360, 0.458, 0.545, 0.8;
+    1=0.215, 0.270, 0.321, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=13;
+  fontColor=1,1,1,0.7;
+  fontShadowPosition=0,-2;
+  fontShadowColor=0,0,0,1;
+}
+buttonUnderLeftPressed={
+  radiusBottomLeft=5;
+  borderSize=1;
+  borderColor=0.058, 0.086, 0.109,0.6;
+  backgroundGradientColor={
+    0=0.066, 0.101, 0.137, 0.6;
+    1=0.129, 0.203, 0.262, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=13;
+  fontColor=0.376, 0.450, 0.505,1;
+  fontShadowPosition=0,-3;
+  fontShadowColor=0,0,0,0.9;
+}
+
+////////////////////////////////////// Button under right ////////////////////////////////////////////
+buttonUnderRightActive={
+  radiusBottomRight=5;
+  borderSize=1;
+  borderColor=1,1,1,0.5;
+  borderColorLeft=0.241, 0.601, 0.654,0.8;
+  backgroundGradientColor={
+    1=0.498, 0.545, 0.6, 0.6;
+    0.05=0.854, 0.874, 0.886, 0.8;
+    0=0.737, 0.756, 0.780, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=13;
+  fontColor=0,0,0,1;
+  fontShadowPosition=0,-1;
+  fontShadowColor=1,1,1,0.7;
+}
+buttonUnderRightHover={
+  radiusBottomRight=5;
+  borderSize=1;
+  borderColor=0.541, 0.701, 0.854,0.2;
+  backgroundGradientColor={
+    0=0.360, 0.458, 0.545, 0.8;
+    1=0.215, 0.270, 0.321, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=13;
+  fontColor=1,1,1,0.7;
+  fontShadowPosition=0,-2;
+  fontShadowColor=0,0,0,1;
+}
+buttonUnderRightPressed={
+  radiusBottomRight=5;
+  borderSize=1;
+  borderColor=0.058, 0.086, 0.109,0.6;
+  backgroundGradientColor={
+    0=0.066, 0.101, 0.137, 0.6;
+    1=0.129, 0.203, 0.262, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=13;
+  fontColor=0.376, 0.450, 0.505,1;
+  fontShadowPosition=0,-3;
+  fontShadowColor=0,0,0,0.9;
+}
+
+////////////////////////////////////// Button with no corners ////////////////////////////////////////////
+buttonSmallActive:buttonDefaultActive={
+  shadowSize=0;
+  fontSize=9;
+}
+buttonSmallHover:buttonDefaultHover={
+  shadowSize=0;
+  fontSize=9;
+}
+buttonSmallPressed:buttonDefaultPressed={
+  shadowSize=0;
+  fontSize=9;
+}
+
+
+
+//Settings button
+textButtonActive={
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=11;
+  fontColor=1,1,1,1;
+  fontShadowPosition=0,-3;
+  fontShadowColor=0,0,0,1;
+}  
+textButtonHover={
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=11;
+  fontColor=0.8,0.8,0.9,0.7;
+  fontShadowPosition=0,-3;
+  fontShadowColor=0,0,0,1;
+}  
+textButtonPressed={
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=11;
+  fontColor=0.376, 0.450, 0.705,1;
+  fontShadowPosition=0,-3;
+  fontShadowColor=0,0,0,0.9;
+}

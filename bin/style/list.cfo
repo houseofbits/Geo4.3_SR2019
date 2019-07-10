@@ -1,0 +1,64 @@
+listItemActive={
+  borderSize=1;   
+  borderColorTop=0.541, 0.701, 0.854,0.2;
+  borderColorBottom=0.058, 0.086, 0.109,0.6;
+  borderColorLeft=1,1,1,0.4;
+  borderColorRight=1,1,1,0.4;    
+  backgroundGradientColor={
+    0=0.360, 0.458, 0.545, 0.8;
+    1=0.215, 0.270, 0.321, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=11;
+  fontColor=1,1,1,0.7;
+  fontShadowPosition=0,-2;
+  fontShadowColor=0,0,0,1;
+}  
+listItemPressed={
+  borderSize=1;
+  borderColorTop=0.058, 0.086, 0.109,0.8;
+  borderColorBottom=0.058, 0.086, 0.109,0.6;
+  borderColorLeft=0.541, 0.701, 0.854,0.2;
+  borderColorRight=0.541, 0.701, 0.854,0.2;    
+  backgroundGradientColor={
+    0=0.066, 0.101, 0.137, 0.6;
+    1=0.129, 0.203, 0.262, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=11;
+  fontColor=0.376, 0.450, 0.705,1;
+  fontShadowPosition=0,-3;
+  fontShadowColor=0,0,0,0.9;
+}
+listBody={
+  backgroundGradientColor={
+    1=0.498, 0.545, 0.6, 0.4;
+    0=0.737, 0.756, 0.780, 0.6;
+  }
+  /*
+  shadowSize=10;
+  shadowHardness=0;
+  shadowPosition=0,-3;
+  shadowColor=0,0,0,0.4; 
+  */   
+} 
+listTitle={
+  radiusTopLeft=5;
+  radiusTopRight=5;
+  borderSizeTop=1;
+  borderSizeLeft=1;
+  borderSizeRight=1;  
+  borderSizeBottom=1;        
+  borderColor=1,1,1,0.4;
+  borderColorBottom=0.058, 0.086, 0.109,0.6;
+  backgroundGradientColor={
+    1=0.498, 0.545, 0.6, 0.6;
+    0.05=0.854, 0.874, 0.886, 0.8;
+    0=0.737, 0.756, 0.780, 0.8;
+  }
+  fontName="fonts/exo1/Exo-SemiBold.ttf";
+  fontSize=12;
+  fontColor=0,0,0,1;
+  fontShadowPosition=0,-1;
+  fontShadowColor=1,1,1,0.7;
+}

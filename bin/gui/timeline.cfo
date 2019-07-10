@@ -1,0 +1,41 @@
+GUISlider={
+  name="timeline";
+  pos=512,753;
+  size=1004,30;
+  range=0,100;
+  value=50;
+  pinSize=10,30;
+}
+
+GUITextInput={  
+  name="timelineValue";
+  size=70,30;
+  pos=150,715;
+}
+GUITextInput={  
+  name="selectedKeyIndex";
+  size=50,30;
+  pos=215,715;
+}
+
+GUIButton={
+  name="playStop";
+  title="Play/Stop";
+  pos=285,715;
+  size=80,30;
+  style="buttonSmall";    
+}
+GUITextInput={  
+  name="playSpeed";
+  size=60,30;
+  pos=360,715;
+  title="10";
+}
+
+GUIText={
+  title="* New resource";
+  name="textResourceFileName";
+  size=200,30;
+  pos=500,715;
+  style="textFilename";
+}

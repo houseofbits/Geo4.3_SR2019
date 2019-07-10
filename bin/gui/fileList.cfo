@@ -1,0 +1,79 @@
+GUIWindow={
+  visible=0;
+  name="windowResources";
+  title="Resources";
+  blocking=1;
+  pos=180,390;
+  size=340,740;
+
+  //Presets list
+  GUIList={
+  	name="resourcesList";
+  	pos=0,-10;
+  	size=340,700;    
+  }
+
+  GUIButton={
+    name="buttonCloseResources";
+    title="Cancel";
+    pos=-110,-340;
+    size=100,40;
+  }
+  GUIButton={
+    name="buttonLoadResources";
+    title="Load";
+    pos=95,-340;
+    size=130,40;
+  } 
+
+  GUIButton={
+    visible=0;
+    name="buttonInsertResources";
+    title="Insert";
+    pos=110,-340;
+    size=100,40;
+  }       
+  GUIButton={
+    visible=0;
+    name="buttonInsertExpandResources";
+    title="Expand";
+    pos=0,-340;
+    size=100,40;
+  }         
+}
+
+GUIWindow={
+  visible=0;
+  name="windowSaveNewResource";
+  title="Save new resource";
+  blocking=1;
+  pos=512,600;
+  size=350,200;
+
+  GUIText={
+    title="Resource name";
+    size=200,20;
+    pos=-115,30;
+    style="textSubscipt";
+  }
+  GUITextInput={
+    name="textInputResourcetName";
+    title="";
+    size=330,40;
+    pos=0,-5;
+    length=18;
+  }
+  GUIButton={
+    name="buttonSaveNewResource";
+    title="Create resource";
+    pos=65,-65;
+    size=150,40;
+  } 
+  GUIButton={
+    name="buttonCancelNewResource";
+    title="Cancel";
+    pos=-75,-65;
+    size=100,40;
+  }   
+
+}

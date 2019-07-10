@@ -1,0 +1,157 @@
+//Header
+GUILayer={
+  name="layerProgramTitle";  
+  style="layerProgramTitle";
+  pos=512,753;
+  size=1004,30;
+  title="";
+  GUIText={
+    style="textProgramName";
+    title="SR2019 Animator 1.0";
+    size=1004,30;
+    pos=0,0;
+  }
+}
+
+GUIWings={
+    name="wings";
+    pos=650,370;
+    size=700,700;
+}
+
+include="gui/timeline.cfo";
+
+include="gui/sidebar.cfo";
+
+include="gui/selectOptions.cfo";
+
+include="gui/colorPicker.cfo";
+
+GUIWindow={
+  visible=0;
+  name="windowEditKey";
+  title="Edit key";
+  blocking=1;
+  pos=512,400;
+  size=240,160;
+
+
+  GUIText={
+    title="Time";
+    size=200,20;
+    pos=-65,30;
+    style="textSubscipt";
+  } 
+  GUITextInput={  
+    name="keyTime";
+    pos=0,0;
+    size=180,30;
+  }  
+
+  GUIButton={
+    name="buttonApplyEditKey";
+    title="Apply";
+    pos=0,-45;
+    size=100,40;
+  }   
+}
+
+
+GUIWindow={
+  visible=0;
+  name="windowEditTimeline";
+  title="Change timeline range";
+  blocking=1;
+  pos=512,400;
+  size=350,170;
+
+  GUIText={
+    title="Time sart";
+    size=200,25;
+    pos=-65,30;
+    style="textSubscipt";
+  } 
+  GUITextInput={  
+    name="timelineTStart";
+    pos=-60,5;
+    size=80,30;
+  }  
+  GUIText={
+    title="Time end";
+    size=200,25;
+    pos=30,30;
+    style="textSubscipt";
+  } 
+  GUITextInput={  
+    name="timelineTEnd";
+    pos=40,5;
+    size=80,30;
+  }    
+  GUIButton={
+    name="buttonCancelEditT";
+    title="Cancel";
+    pos=-110,-50;
+    size=100,40;
+  }   
+  GUIButton={
+    name="buttonResizeEditT";
+    title="Resize";
+    pos=0,-50;
+    size=100,40;
+  } 
+  GUIButton={
+    name="buttonScaleEditT";
+    title="Scale";
+    pos=110,-50;
+    size=100,40;
+  }     
+}
+
+GUIWindow={
+  visible=0;
+  name="windowExpandTimeline";
+  title="Expand timeline at cursor";
+  blocking=1;
+  pos=512,400;
+  size=350,170;
+
+  GUIText={
+    title="Expand left";
+    size=200,25;
+    pos=-65,30;
+    style="textSubscipt";
+  } 
+  GUITextInput={  
+    name="timelineExpandLeftInput";
+    pos=-60,5;
+    size=80,30;
+    title=0;
+  }  
+  GUIText={
+    title="Expand right";
+    size=200,25;
+    pos=30,30;
+    style="textSubscipt";
+  } 
+  GUITextInput={  
+    name="timelineExpandRightInput";
+    pos=40,5;
+    size=80,30;
+    title=0;    
+  }    
+  GUIButton={
+    name="buttonCancelExpand";
+    title="Cancel";
+    pos=-110,-50;
+    size=100,40;
+  }    
+  GUIButton={
+    name="buttonExpand";
+    title="Expand";
+    pos=110,-50;
+    size=100,40;
+  }     
+}
+
+include="gui/fileList.cfo";
+

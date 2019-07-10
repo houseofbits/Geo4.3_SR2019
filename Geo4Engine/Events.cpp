@@ -1,0 +1,8 @@
+#include "events.h"
+
+CLASS_DECLARATION(FrameEvent);
+CLASS_DECLARATION(CustomWindowEvent);
+//CLASS_DECLARATION(InputEvent);
+CLASS_DECLARATION(SceneManagerEvent);
+//CLASS_DECLARATION(GUIEvent);
+//CLASS_DECLARATION(GUIInputEvent);
