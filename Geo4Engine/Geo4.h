@@ -67,9 +67,11 @@ Geo4 engine
 	#include "Interface.h"
 #endif
 	
+	#include "WingKeyframesResource.h"
+
 	#include "DataPacketParse.h"
 	#include "DataPacketRequest.h"	
 //	#include "ExturbatorRequests.h"
-//	#include "Hardware.h"
+	#include "BasicSerial.h"
 
 

@@ -21,8 +21,11 @@ SDLWindow={
 		clear_color=0.1,0.1,0.13,1.0;
 	}
 	
-	Interface={
-		
+	Interface={	}
+
+	BasicSerial={
+		serial_port="COM4";
+		baud_rate="9600";
 	}
 
 	GUIViewport={

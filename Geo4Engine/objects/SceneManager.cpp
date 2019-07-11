@@ -31,6 +31,7 @@ SceneManager::SceneManager(void) : Entity(),
 	RegisterObjectType(GUIGraph());
 	RegisterObjectType(GUIWings());
 	RegisterObjectType(Interface());
+	RegisterObjectType(BasicSerial());
 #endif
 
 }

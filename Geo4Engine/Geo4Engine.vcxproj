@@ -237,6 +237,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BasicSerial.cpp" />
     <ClCompile Include="CFODocument.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EventReceiver.cpp" />
@@ -280,8 +281,10 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Serial.cpp" />
     <ClCompile Include="Triangulation.cpp" />
+    <ClCompile Include="WingKeyframesResource.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasicSerial.h" />
     <ClInclude Include="CFODocument.h" />
     <ClInclude Include="DataPacketRequest.h" />
     <ClInclude Include="Entity.h" />
@@ -335,6 +338,7 @@
     <ClInclude Include="Serial.h" />
     <ClInclude Include="StringUtils.h" />
     <ClInclude Include="Triangulation.h" />
+    <ClInclude Include="WingKeyframesResource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
