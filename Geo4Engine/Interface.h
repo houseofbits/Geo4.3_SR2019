@@ -5,6 +5,7 @@
 //#include "gui/GUIWings.h"
 
 class GUIWings;
+class BasicSerial;
 
 class Interface : public Entity, public EventHandler
 {
@@ -26,6 +27,7 @@ public:
 
 	GUIWings*	wings;
 	GUISlider* 	timeline;
+	BasicSerial* hardware;
 
 	void		updateTimeline();
 	void		updateKeyIndex();

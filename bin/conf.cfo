@@ -24,8 +24,9 @@ SDLWindow={
 	Interface={	}
 
 	BasicSerial={
-		serial_port="COM4";
-		baud_rate="9600";
+		name="hardware";
+		serial_port="COM5";
+		baud_rate="115200";
 	}
 
 	GUIViewport={

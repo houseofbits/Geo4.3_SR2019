@@ -7,18 +7,24 @@
 enum PacketClassEnumerator : unsigned short
 {
 	HEADER = 0,
+	WING_LIGHT_DATA,
 	LIGHT_DATA,
 	MOVER_DATA,
 };
 
 typedef struct {
-	unsigned char r;
 	unsigned char g;
+	unsigned char r;
 	unsigned char b;
 }LightColor;
 typedef struct {
 	LightColor colors[7];
 }LightWing;
+typedef struct {
+	LightColor	colors[7];
+	uint8_t		wingId;
+}LightWingData;
+
 struct LightDataOutStructure {
 	LightWing wingData[12];
 };
@@ -26,10 +32,13 @@ struct MoverDataOutStructure {
 	unsigned char data[12];
 };
 
-typedef DataPacket<LightDataOutStructure, PacketClassEnumerator> LightDataPacket;
-typedef DataPacket<MoverDataOutStructure, PacketClassEnumerator> MoverDataPacket;
+typedef CompleteDataPacket<LightWingData, PacketClassEnumerator> WingLightDataPacket;
+typedef CompleteDataPacket<LightDataOutStructure, PacketClassEnumerator> LightDataPacket;
+typedef CompleteDataPacket<MoverDataOutStructure, PacketClassEnumerator> MoverDataPacket;
 
-class BasicSerial : public Entity, public CSerialEx
+class BasicSerial : public Entity, 
+	public CSerialEx,
+	public EventHandler
 {
 CLASS_PROTOTYPE(BasicSerial);
 public:
@@ -43,6 +52,7 @@ public:
 	void	Deserialize(CFONode*);
 
 	bool	OnWindowEvent(WindowEvent*const);
+	bool	OnGUIInputEvent(GUIInputEvent*const);
 
 	bool	OpenPort(string name, string baud, string stop, string parity);
 
@@ -60,5 +70,16 @@ public:
 	string	configBaudRate;
 	string	configStopBits;
 	string	configParity;
+
+
+	WingLightDataPacket wingLightDataPacket;
+
+
+	LightDataPacket		lightDataPacket;
+	MoverDataPacket		moverDataPacket;
+
+	void updateLightData(WingsKeyframe&);
+
+	LightDataOutStructure	lightDataOut;
 };
 

@@ -3,7 +3,11 @@
 CLASS_DECLARATION(BasicSerial);
 
 BasicSerial::BasicSerial() : Entity(),
-CSerialEx()
+CSerialEx(),
+EventHandler(),
+lightDataPacket("SR2019LT", PacketClassEnumerator::LIGHT_DATA),
+moverDataPacket("SR2019LT", PacketClassEnumerator::MOVER_DATA),
+wingLightDataPacket("SR2019LT", PacketClassEnumerator::WING_LIGHT_DATA)
 {
 	memset(outputBuffer, 0, MAX_PAYLOAD_SIZE);
 }
@@ -12,10 +16,11 @@ CSerialEx()
 BasicSerial::~BasicSerial()
 {
 }
-void BasicSerial::Initialise(EventManager*const event_manager, ResourceManager*const resourceManager)
+void BasicSerial::Initialise(EventManager*const eventManager, ResourceManager*const resourceManager)
 {
-	event_manager->RegisterEventHandler(this);
-	event_manager->RegisterEventReceiver(this, &Interface::OnWindowEvent);
+	eventManager->RegisterEventHandler(this);
+	eventManager->RegisterEventReceiver(this, &BasicSerial::OnWindowEvent);
+	eventManager->RegisterEventReceiver(this, &BasicSerial::OnGUIInputEvent);
 }
 
 void BasicSerial::Deserialize(CFONode* node)
@@ -35,6 +40,134 @@ bool BasicSerial::OnWindowEvent(WindowEvent*const event)
 
 
 	return 1;
+}
+
+#define DATA_SIZE 252
+
+void BasicSerial::updateLightData(WingsKeyframe& k)
+{
+
+	for (unsigned int a = 0; a < 12; a++)
+	{
+		for (unsigned int i = 0; i < 7; i++)
+		{
+			lightDataOut.wingData[a].colors[i].r = (unsigned char)(k.colors[a][i].x * 255.0f);
+			lightDataOut.wingData[a].colors[i].g = (unsigned char)(k.colors[a][i].y * 255.0f);
+			lightDataOut.wingData[a].colors[i].b = (unsigned char)(k.colors[a][i].z * 255.0f);
+		}
+	}
+
+	outputBuffer[0] = (unsigned char)83;
+	outputBuffer[1] = (unsigned char)82;
+	outputBuffer[2] = (unsigned char)49;
+	outputBuffer[3] = (unsigned char)57;
+
+	unsigned char* dta = (unsigned char*)&lightDataOut.wingData;
+
+	if (IsOpen()) {
+
+		Write(outputBuffer, 4, 0, 0, 10);
+
+		Write(dta, DATA_SIZE, 0, 0, 10);
+
+		outputBuffer[0] = CRC8(dta, DATA_SIZE);
+
+		Write(outputBuffer, 1, 0, 0, 10);
+	}
+}
+
+
+
+
+bool BasicSerial::OnGUIInputEvent(GUIInputEvent*const event)
+{	
+	
+	LightDataOutStructure ldo;
+
+	for (unsigned int a = 0; a < 12; a++)
+	{
+		for (unsigned int i = 0; i < 7; i++)
+		{
+			ldo.wingData[a].colors[i].r = (unsigned char)Math::RangeRandom(0, 255);
+			ldo.wingData[a].colors[i].g = (unsigned char)Math::RangeRandom(0, 255);
+			ldo.wingData[a].colors[i].b = (unsigned char)Math::RangeRandom(0, 255);
+		}
+	}
+
+	/*
+	ldo.wingData[0].colors[1].r = 0;
+	ldo.wingData[0].colors[1].g = 0;
+	ldo.wingData[0].colors[1].b = 255;
+	LightWingData lwd;
+	lwd.colors[1].r = (unsigned char)Math::RangeRandom(0, 255);
+	lwd.colors[1].g = (unsigned char)Math::RangeRandom(0, 255);
+	lwd.colors[1].b = (unsigned char)Math::RangeRandom(0, 255);
+	lwd.wingId = 0;
+	*/
+
+	switch (event->type) {
+	case GUIInputEvent::EventType::KEYUP:
+		//cout << event->keyCode << endl;
+		//'Q'
+		if (event->keyCode == 20) {
+			
+			//cout << "----------------------------------------" << endl;
+
+			memset(&outputBuffer, 0, MAX_PAYLOAD_SIZE);
+
+			outputBuffer[0] = (unsigned char)83;
+			outputBuffer[1] = (unsigned char)82;
+			outputBuffer[2] = (unsigned char)49;
+			outputBuffer[3] = (unsigned char)57;
+
+			unsigned char* dta = (unsigned char*)&ldo.wingData;
+
+			/*
+			outputBuffer[4] = (unsigned char)1;
+			outputBuffer[5] = (unsigned char)2;
+			outputBuffer[6] = (unsigned char)3;
+			outputBuffer[7] = (unsigned char)4;
+
+			outputBuffer[8] = (unsigned char)5;
+
+			outputBuffer[9] = (unsigned char)6;
+			outputBuffer[10] = (unsigned char)7;
+
+			unsigned char crc = CRC8(&outputBuffer[4], DATA_SIZE);
+			outputBuffer[4 + DATA_SIZE] = crc;
+			*/
+
+			
+
+
+			if (IsOpen()) {
+
+				Write(outputBuffer, 4, 0, 0, 10);
+
+				Write(dta, DATA_SIZE, 0, 0, 10);
+
+				outputBuffer[0] = CRC8(dta, DATA_SIZE);
+
+				Write(outputBuffer, 1, 0, 0, 10);
+			}
+
+			//lightDataPacket.setPayload(lightDataOut);
+			//WritePacket(&lightDataPacket);	
+
+			//wingLightDataPacket.setPayload(lwd);
+			//WritePacket(&wingLightDataPacket);
+		}
+		//'W'
+		if (event->keyCode == 26) {
+		//	moverDataPacket.setPayload(MoverDataOutStructure());
+		//	WritePacket(&moverDataPacket);
+		//	WritePacket(&moverDataPacket);
+		//	WritePacket(&moverDataPacket);
+		}
+		break;
+
+	}
+	return true;
 }
 
 bool BasicSerial::OpenPort(string name, string baudStr, string stop, string parityStr) {
@@ -101,7 +234,7 @@ bool BasicSerial::OpenPort(string name, string baudStr, string stop, string pari
 }
 
 void BasicSerial::OnSerialEvent(EEvent eEvent, EError eError) {
-	/*
+	
 	if (eEvent & CSerial::EEventRecv) {
 		DWORD dwBytesRead = 0;
 		char szBuffer[101];
@@ -111,14 +244,17 @@ void BasicSerial::OnSerialEvent(EEvent eEvent, EError eError) {
 			if (dwBytesRead > 0) {
 				szBuffer[dwBytesRead] = '\0';
 			}
-		} while (dwBytesRead == sizeof(szBuffer) - 1);
+			
+			cout << szBuffer;
 
+		} while (dwBytesRead == sizeof(szBuffer) - 1);
+		/*
 		std::lock_guard<std::mutex> lock(*mtx);
 		for (unsigned int i = 0; i < dwBytesRead; i++) {
 			inputBuffer.push(szBuffer[i]);
-		}
+		}*/
 	}
-	*/
+	
 }
 
 void BasicSerial::WritePacket(BaseDataPacket* packet) {

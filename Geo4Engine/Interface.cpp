@@ -28,6 +28,7 @@ void Interface::Initialise(EventManager*const event_manager, ResourceManager*con
 	try {
 		wings = instanceOf<GUIWings>("wings");
 		timeline = instanceOf<GUISlider>("timeline");
+		hardware = instanceOf<BasicSerial>("hardware");
 		playSpeed = (float)atof(instanceOf<GUITextInput>("playSpeed")->m_Title.c_str());
 	}
 	catch (int e) {
@@ -52,6 +53,7 @@ bool Interface::OnWindowEvent(WindowEvent*const event){
 			WingsKeyframe kf;
 			if (getInterpolatedKeyframe(timeline->value, kf)) {
 				wings->applyKeyframe(kf);
+				hardware->updateLightData(kf);
 			}
 		}
 
@@ -73,6 +75,7 @@ bool Interface::OnGUIEvent(GUIEvent*const event) {
 					WingsKeyframe kf;
 					if (getInterpolatedKeyframe(timeline->value, kf)) {
 						wings->applyKeyframe(kf);
+						hardware->updateLightData(kf);
 					}
 				}
 				updateKeyIndex();
@@ -88,6 +91,7 @@ bool Interface::OnGUIEvent(GUIEvent*const event) {
 				WingsKeyframe kf;
 				if (getInterpolatedKeyframe(timeline->value, kf)) {
 					wings->applyKeyframe(kf);
+					hardware->updateLightData(kf);
 				}
 			}
 			if (event->m_Sender->getHashName() == hashStr("playSpeed")) {
@@ -100,6 +104,7 @@ bool Interface::OnGUIEvent(GUIEvent*const event) {
 					instanceOf<GUITextInput>("timelineValue")->setTitle(Utils::FloatToString(timeline->value, 4));
 					selectedKeyIndex = idx;
 					wings->applyKeyframe(*keyframes[idx]);
+					hardware->updateLightData(*keyframes[idx]);
 				}
 			}
 		}
@@ -164,6 +169,7 @@ bool Interface::OnGUIEvent(GUIEvent*const event) {
 					int i = getNextKeyframe(timeline->value, kf);
 					if (i >= 0) {
 						wings->applyKeyframe(kf);
+						hardware->updateLightData(kf);
 						timeline->value = kf.t;
 						selectedKeyIndex = i;
 					}
@@ -177,6 +183,7 @@ bool Interface::OnGUIEvent(GUIEvent*const event) {
 					int i = getPreviousKeyframe(timeline->value, kf);
 					if (i >= 0) {
 						wings->applyKeyframe(kf);
+						hardware->updateLightData(kf);
 						timeline->value = kf.t;
 					}
 					updateTimeline();

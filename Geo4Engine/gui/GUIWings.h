@@ -70,6 +70,8 @@ public:
 
 	bool	selection[12][7];
 
+	TrueTypeFontFaceHandle fontHandle;
+
 	WingsKeyframe	createKeyframe(float t);
 	void			applyKeyframe(WingsKeyframe&);
 };

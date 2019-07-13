@@ -7,7 +7,8 @@ CLASS_DECLARATION(GUIWings);
 GUIWings::GUIWings() :
 	selectedWing(-1),
 	selectedSegment(-1),
-	selection()
+	selection(),
+	fontHandle()
 {	}
 
 GUIWings::~GUIWings()
@@ -18,6 +19,8 @@ void GUIWings::Initialise(EventManager*const eventManager, ResourceManager*const
 	eventManager->RegisterEventHandler(this);
 
 	eventManager->RegisterEventReceiver(this, &GUIWings::OnGUIInputEvent);
+
+	resourceManager->Get(fontHandle, "fonts/exo1/Exo-SemiBold.ttf");
 
 	for (unsigned int i = 0; i < 12; i++) {
 		wings[i] = new Wing(700, (float)i*30.0f);
@@ -73,6 +76,20 @@ void GUIWings::Render(Renderer* rnd){
 
 	for (unsigned int i = 0; i < 12; i++) {
 		wings[i]->draw(selection[i]);
+	}
+	for (unsigned int i = 0; i < 12; i++) {
+
+		glPushMatrix();
+
+		glRotatef(wings[i]->angle, 0, 0, 1);
+
+		glTranslatef(0,-40, 0);
+		glColor4f(1,1,1,0.5f);
+
+		fontHandle->Draw(Utils::IntToString(i), 8);
+
+		glPopMatrix();
+
 	}
 
 	glPopMatrix();
