@@ -63,6 +63,9 @@ public:
 	void	selectRing();
 	void	selectRingOdd();
 
+	void	rotateSelected(bool left);
+	void	expandSelected(bool out);
+
 	Wing*	wings[12];
 
 	int		selectedWing;

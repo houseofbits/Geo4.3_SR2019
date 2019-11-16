@@ -328,6 +328,19 @@ bool Interface::OnGUIEvent(GUIEvent*const event) {
 				updateKeyIndex();
 				break;
 
+			case hashStr("buttonRotateLeft"):
+				if (wings)wings->rotateSelected(true);
+				break;
+			case hashStr("buttonRotateRight"):
+				if (wings)wings->rotateSelected(false);
+				break;
+			case hashStr("buttonExpandOut"):
+				if (wings)wings->expandSelected(true);
+				break;
+			case hashStr("buttonContract"):
+				if (wings)wings->expandSelected(false);
+				break;
+
 			};
 		}
 	}

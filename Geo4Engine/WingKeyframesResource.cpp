@@ -30,8 +30,8 @@ void WingKeyframesResource::SaveToFile(string name, vector<WingsKeyframe*> & key
 		for (int w = 0; w < 12; w++) {
 			for (int c = 0; c < 7; c++) {
 				data.keyframes[k].t = keyframes[k]->t;
-				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].r = keyframes[k]->colors[w][c].x;
-				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].g = keyframes[k]->colors[w][c].y;
+				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].g = keyframes[k]->colors[w][c].x;
+				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].r = keyframes[k]->colors[w][c].y;
 				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].b = keyframes[k]->colors[w][c].z;
 			}
 		}
@@ -83,8 +83,8 @@ void WingKeyframesResource::ReadFromFile(string name, vector<WingsKeyframe*> &ke
 
 		for (int w = 0; w < 12; w++) {
 			for (int c = 0; c < 7; c++) {
-				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].x = data.keyframes[k].data[w].colors[c].r;
-				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].y = data.keyframes[k].data[w].colors[c].g;
+				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].x = data.keyframes[k].data[w].colors[c].g;
+				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].y = data.keyframes[k].data[w].colors[c].r;
 				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].z = data.keyframes[k].data[w].colors[c].b;
 			}
 		}
@@ -132,8 +132,8 @@ void WingKeyframesResource::InsertFromFile(string name, vector<WingsKeyframe*> &
 
 		for (int w = 0; w < 12; w++) {
 			for (int c = 0; c < 7; c++) {
-				kf->colors[w][c].x = data.keyframes[k].data[w].colors[c].r;
-				kf->colors[w][c].y = data.keyframes[k].data[w].colors[c].g;
+				kf->colors[w][c].x = data.keyframes[k].data[w].colors[c].g;
+				kf->colors[w][c].y = data.keyframes[k].data[w].colors[c].r;
 				kf->colors[w][c].z = data.keyframes[k].data[w].colors[c].b;
 			}
 		}

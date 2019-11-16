@@ -61,7 +61,7 @@ GUIWindow={
     title="";
     size=330,40;
     pos=0,-5;
-    length=18;
+    length=100;
   }
   GUIButton={
     name="buttonSaveNewResource";

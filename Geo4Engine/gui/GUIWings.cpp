@@ -3,7 +3,7 @@
 #ifndef NO_OPENGL
 
 CLASS_DECLARATION(GUIWings);
-
+/*
 #define S1_ID 0
 #define S2_ID 1
 #define A1L_ID 2
@@ -11,6 +11,16 @@ CLASS_DECLARATION(GUIWings);
 #define S3_ID 4
 #define A2L_ID 5
 #define A2R_ID 6
+*/
+
+#define S1_ID 0
+#define A2L_ID 2
+#define A2R_ID 1
+#define S2_ID 3
+#define A3L_ID 4
+#define A3R_ID 5
+#define S3_ID 6
+
 
 GUIWings::GUIWings() :
 	selectedWing(-1),
@@ -129,15 +139,15 @@ Wing::Wing(float s, float a) {
 	quads[S3_ID][2] = Vector2(scale * -0.013f, scale * 0.491f);
 	quads[S3_ID][3] = Vector2(scale * 0.013f, scale * 0.491f);
 	//A1
-	quads[A1R_ID][0] = Vector2(scale * 0.022f, scale * 0.243f);
-	quads[A1R_ID][1] = Vector2(scale * 0.022f, scale * 0.273f);
-	quads[A1R_ID][2] = Vector2(scale * 0.097f, scale * 0.402f);
-	quads[A1R_ID][3] = Vector2(scale * 0.104f, scale * 0.4f);
+	quads[A3R_ID][0] = Vector2(scale * 0.022f, scale * 0.243f);
+	quads[A3R_ID][1] = Vector2(scale * 0.022f, scale * 0.273f);
+	quads[A3R_ID][2] = Vector2(scale * 0.097f, scale * 0.402f);
+	quads[A3R_ID][3] = Vector2(scale * 0.104f, scale * 0.4f);
 	//A1 L
-	quads[A1L_ID][0] = Vector2(scale * -0.022f, scale * 0.243f);
-	quads[A1L_ID][1] = Vector2(scale * -0.022f, scale * 0.273f);
-	quads[A1L_ID][2] = Vector2(scale * -0.097f, scale * 0.402f);
-	quads[A1L_ID][3] = Vector2(scale * -0.104f, scale * 0.4f);
+	quads[A3L_ID][0] = Vector2(scale * -0.022f, scale * 0.243f);
+	quads[A3L_ID][1] = Vector2(scale * -0.022f, scale * 0.273f);
+	quads[A3L_ID][2] = Vector2(scale * -0.097f, scale * 0.402f);
+	quads[A3L_ID][3] = Vector2(scale * -0.104f, scale * 0.4f);
 	//A2
 	quads[A2R_ID][0] = Vector2(scale * 0.021f, scale * 0.19f);
 	quads[A2R_ID][1] = Vector2(scale * 0.022f, scale * 0.237f);
@@ -208,9 +218,11 @@ int	Wing::clip(Vector2 v) {
 			return S2_ID;
 		}
 		else if (vp.x < -0.019f) {
+		//	cout << A2L_ID << endl;
 			return A2L_ID;
 		}
 		else if (vp.x > 0.019f) {
+		//	cout << A2R_ID << endl;
 			return A2R_ID;
 		}
 	}
@@ -220,10 +232,12 @@ int	Wing::clip(Vector2 v) {
 			return S3_ID;
 		}
 		else if (vp.x < -0.019f) {
-			return A1L_ID;
+		//	cout << A3L_ID << endl;
+			return A3L_ID;
 		}
 		else if (vp.x > 0.019f) {
-			return A1R_ID;
+		//	cout << A3R_ID << endl;
+			return A3R_ID;
 		}
 	}
 
@@ -301,6 +315,111 @@ void GUIWings::applyKeyframe(WingsKeyframe& keyframe)
 	}
 }
 
+void GUIWings::rotateSelected(bool left)
+{
+
+	int rotateS1 = -1;
+	int rotateS2 = -1;
+	int rotateS3 = -1;
+
+	for (int i = 0; i < 12; i++) {
+		for (int a = 0; a < 7; a++) {
+			if (selection[i][a]) {
+				//wings[i]->colors[a] = color;
+				if (a == S1_ID) {
+					rotateS1 = 0;
+				}
+				if (a == S2_ID){
+					rotateS2 = S2_ID;
+				}
+				if (a == A2L_ID) {
+					rotateS2 = A2L_ID;
+				}
+				if (a == A2R_ID) {
+					rotateS2 = A2R_ID;
+				}
+				if (a == S3_ID) {
+					rotateS3 = S3_ID;
+				}
+				if (a == A3L_ID) {
+					rotateS3 = A3L_ID;
+				}
+				if (a == A3R_ID) {
+					rotateS3 = A3R_ID;
+				}
+			}
+		}
+	}
+	if (rotateS1 >= 0) {
+		Vector3 colors[12];
+		int incr = 1;
+		if (!left)incr = 11;
+		for (int i = 0; i < 12; i++) {
+			int next = (i + incr) % 12;
+			colors[i] = wings[next]->colors[S1_ID];
+		}
+		for (int i = 0; i < 12; i++) {
+			wings[i]->colors[S1_ID] = colors[i];
+		}
+	}
+	if (rotateS2 >= 0) {
+		Vector3 colors[36];
+		int ib = 0;
+		for (int i = 0; i < 12; i++) {
+			colors[ib] = wings[i]->colors[A2R_ID];
+			ib++;
+			colors[ib] = wings[i]->colors[S2_ID];
+			ib++;
+			colors[ib] = wings[i]->colors[A2L_ID];
+			ib++;
+		}
+		ib = 1;
+		if (!left)ib = 35;
+		for (int i = 0; i < 12; i++) {
+			wings[i]->colors[A2R_ID] = colors[ib];
+			ib = (ib+1)%36;
+			wings[i]->colors[S2_ID] = colors[ib];
+			ib = (ib + 1) % 36;
+			wings[i]->colors[A2L_ID] = colors[ib];
+			ib = (ib + 1) % 36;
+		}
+	}
+	if (rotateS3 >= 0) {
+		Vector3 colors[36];
+		int ib = 0;
+		for (int i = 0; i < 12; i++) {
+			colors[ib] = wings[i]->colors[A3R_ID];
+			ib++;
+			colors[ib] = wings[i]->colors[S3_ID];
+			ib++;
+			colors[ib] = wings[i]->colors[A3L_ID];
+			ib++;
+		}
+		ib = 1;
+		if (!left)ib = 35;
+		for (int i = 0; i < 12; i++) {
+			wings[i]->colors[A3R_ID] = colors[ib];
+			ib = (ib + 1) % 36;
+			wings[i]->colors[S3_ID] = colors[ib];
+			ib = (ib + 1) % 36;
+			wings[i]->colors[A3L_ID] = colors[ib];
+			ib = (ib + 1) % 36;
+		}
+	}
+}
+void GUIWings::expandSelected(bool out)
+{
+
+	for (int i = 0; i < 12; i++) {
+		for (int a = 0; a < 7; a++) {
+			if (selection[i][a]) {
+				//wings[i]->colors[a] = color;
+			}
+		}
+	}
+
+}
+
 WingsKeyframe WingsKeyframe::getInterpolated(float td, WingsKeyframe& other)
 {
 	WingsKeyframe k;
@@ -322,3 +441,4 @@ WingsKeyframe GUIWings::createKeyframe(float t)
 	k.t = t;
 	return k;
 }
+

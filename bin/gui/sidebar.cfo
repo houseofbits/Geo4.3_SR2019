@@ -85,6 +85,44 @@ GUILayer={
     } 
 
     GUIButton={
+      name="buttonRotateLeft";
+      title="Rt.L";
+      pos=-30,55;
+      size=40,20;
+      style="buttonSmall";    
+    } 
+    GUIButton={
+      name="buttonRotateRight";
+      title="Rt.R";
+      pos=30,55;
+      size=40,20;
+      style="buttonSmall";    
+    }
+    /*
+    GUIButton={
+      name="buttonExpandOut";
+      title="Exp.";
+      pos=-30,30;
+      size=40,20;
+      style="buttonSmall";    
+    } 
+    GUIButton={
+      name="buttonContract";
+      title="Ctra";
+      pos=30,30;
+      size=40,20;
+      style="buttonSmall";    
+    }
+    */
+
+
+
+
+
+
+
+
+    GUIButton={
       name="saveData";
       title="Save";
       pos=0,-65;
