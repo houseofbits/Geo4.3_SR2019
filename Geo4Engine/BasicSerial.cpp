@@ -93,6 +93,16 @@ bool BasicSerial::OnGUIInputEvent(GUIInputEvent*const event)
 			ldo.wingData[a].colors[i].b = (unsigned char)Math::RangeRandom(0, 255);
 		}
 	}
+	/*
+	ldo.wingData[0].colors[0].r = 0;
+	ldo.wingData[0].colors[0].g = 255;
+	ldo.wingData[0].colors[0].b = 0;
+
+	ldo.wingData[0].colors[1].r = 0;
+	ldo.wingData[0].colors[1].g = 0;
+	ldo.wingData[0].colors[1].b = 0;
+	*/
+	
 
 	/*
 	ldo.wingData[0].colors[1].r = 0;

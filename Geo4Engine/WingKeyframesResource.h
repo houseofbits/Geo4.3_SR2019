@@ -32,4 +32,7 @@ public:
 	void SaveToFile(string, vector<WingsKeyframe*> &, float, float);
 	void ReadFromFile(string, vector<WingsKeyframe*> &, float &tstart, float &tend);
 	void InsertFromFile(string, vector<WingsKeyframe*> &, float &tstart, float &tend, float dt, bool expand);
+
+	static int keyframeMapping[7];
+
 };

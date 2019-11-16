@@ -4,6 +4,14 @@
 
 CLASS_DECLARATION(GUIWings);
 
+#define S1_ID 0
+#define S2_ID 1
+#define A1L_ID 2
+#define A1R_ID 3
+#define S3_ID 4
+#define A2L_ID 5
+#define A2R_ID 6
+
 GUIWings::GUIWings() :
 	selectedWing(-1),
 	selectedSegment(-1),
@@ -106,40 +114,40 @@ Wing::Wing(float s, float a) {
 	angle = a;
 	scale = s;
 	//S1
-	quads[0][0] = Vector2(scale * 0.008f, scale * 0.035f);
-	quads[0][1] = Vector2(scale * -0.008f, scale * 0.035f);
-	quads[0][2] = Vector2(scale * -0.014f, scale * 0.13f);
-	quads[0][3] = Vector2(scale * 0.014f, scale * 0.13f);
+	quads[S1_ID][0] = Vector2(scale * 0.008f, scale * 0.035f);
+	quads[S1_ID][1] = Vector2(scale * -0.008f, scale * 0.035f);
+	quads[S1_ID][2] = Vector2(scale * -0.014f, scale * 0.13f);
+	quads[S1_ID][3] = Vector2(scale * 0.014f, scale * 0.13f);
 	//S2
-	quads[1][0] = Vector2(scale * 0.014f, scale * 0.135f);
-	quads[1][1] = Vector2(scale * -0.014f, scale * 0.135f);
-	quads[1][2] = Vector2(scale * -0.019f, scale * 0.238f);
-	quads[1][3] = Vector2(scale * 0.019f, scale * 0.238f);
+	quads[S2_ID][0] = Vector2(scale * 0.014f, scale * 0.135f);
+	quads[S2_ID][1] = Vector2(scale * -0.014f, scale * 0.135f);
+	quads[S2_ID][2] = Vector2(scale * -0.019f, scale * 0.238f);
+	quads[S2_ID][3] = Vector2(scale * 0.019f, scale * 0.238f);
 	//S3
-	quads[2][0] = Vector2(scale * 0.019f, scale * 0.243f);
-	quads[2][1] = Vector2(scale * -0.019f, scale * 0.243f);
-	quads[2][2] = Vector2(scale * -0.013f, scale * 0.491f);
-	quads[2][3] = Vector2(scale * 0.013f, scale * 0.491f);
+	quads[S3_ID][0] = Vector2(scale * 0.019f, scale * 0.243f);
+	quads[S3_ID][1] = Vector2(scale * -0.019f, scale * 0.243f);
+	quads[S3_ID][2] = Vector2(scale * -0.013f, scale * 0.491f);
+	quads[S3_ID][3] = Vector2(scale * 0.013f, scale * 0.491f);
 	//A1
-	quads[3][0] = Vector2(scale * 0.022f, scale * 0.243f);
-	quads[3][1] = Vector2(scale * 0.022f, scale * 0.273f);
-	quads[3][2] = Vector2(scale * 0.097f, scale * 0.402f);
-	quads[3][3] = Vector2(scale * 0.104f, scale * 0.4f);
+	quads[A1R_ID][0] = Vector2(scale * 0.022f, scale * 0.243f);
+	quads[A1R_ID][1] = Vector2(scale * 0.022f, scale * 0.273f);
+	quads[A1R_ID][2] = Vector2(scale * 0.097f, scale * 0.402f);
+	quads[A1R_ID][3] = Vector2(scale * 0.104f, scale * 0.4f);
 	//A1 L
-	quads[4][0] = Vector2(scale * -0.022f, scale * 0.243f);
-	quads[4][1] = Vector2(scale * -0.022f, scale * 0.273f);
-	quads[4][2] = Vector2(scale * -0.097f, scale * 0.402f);
-	quads[4][3] = Vector2(scale * -0.104f, scale * 0.4f);
+	quads[A1L_ID][0] = Vector2(scale * -0.022f, scale * 0.243f);
+	quads[A1L_ID][1] = Vector2(scale * -0.022f, scale * 0.273f);
+	quads[A1L_ID][2] = Vector2(scale * -0.097f, scale * 0.402f);
+	quads[A1L_ID][3] = Vector2(scale * -0.104f, scale * 0.4f);
 	//A2
-	quads[5][0] = Vector2(scale * 0.021f, scale * 0.19f);
-	quads[5][1] = Vector2(scale * 0.022f, scale * 0.237f);
-	quads[5][2] = Vector2(scale * 0.04f, scale * 0.149f);
-	quads[5][3] = Vector2(scale * 0.033f, scale * 0.151f);
+	quads[A2R_ID][0] = Vector2(scale * 0.021f, scale * 0.19f);
+	quads[A2R_ID][1] = Vector2(scale * 0.022f, scale * 0.237f);
+	quads[A2R_ID][2] = Vector2(scale * 0.04f, scale * 0.149f);
+	quads[A2R_ID][3] = Vector2(scale * 0.033f, scale * 0.151f);
 	//A2 L
-	quads[6][0] = Vector2(scale * -0.021f, scale * 0.19f);
-	quads[6][1] = Vector2(scale * -0.022f, scale * 0.237f);
-	quads[6][2] = Vector2(scale * -0.04f, scale * 0.149f);
-	quads[6][3] = Vector2(scale * -0.033f, scale * 0.151f);
+	quads[A2L_ID][0] = Vector2(scale * -0.021f, scale * 0.19f);
+	quads[A2L_ID][1] = Vector2(scale * -0.022f, scale * 0.237f);
+	quads[A2L_ID][2] = Vector2(scale * -0.04f, scale * 0.149f);
+	quads[A2L_ID][3] = Vector2(scale * -0.033f, scale * 0.151f);
 }
 
 void Wing::setColors(Vector3 c[7])
@@ -191,31 +199,31 @@ int	Wing::clip(Vector2 v) {
 	//S1
 	if (vp.y < 0.13f) {
 		if (vp.x > -0.015f && vp.x < 0.015f) {
-			return 0;
+			return S1_ID;
 		}
 	}
 	//s2 / a2
 	else if (vp.y > 0.13f && vp.y < 0.238f) {
 		if (vp.x > -0.019f && vp.x < 0.019f) {
-			return 1;
+			return S2_ID;
 		}
 		else if (vp.x < -0.019f) {
-			return 6;
+			return A2L_ID;
 		}
 		else if (vp.x > 0.019f) {
-			return 5;
+			return A2R_ID;
 		}
 	}
 	//s3 / a1
 	else if (vp.y > 0.238f) {
 		if (vp.x > -0.019f && vp.x < 0.019f) {
-			return 2;
+			return S3_ID;
 		}
 		else if (vp.x < -0.019f) {
-			return 4;
+			return A1L_ID;
 		}
 		else if (vp.x > 0.019f) {
-			return 3;
+			return A1R_ID;
 		}
 	}
 
