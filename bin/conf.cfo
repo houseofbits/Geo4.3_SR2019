@@ -1,6 +1,6 @@
 SDLWindow={
 	name="window";
-	title="SevenSteps";
+	title="SR2019";
 	//fullscreen=0; width=800; height=600;
 	fullscreen=0; width=1024; height=768;	
 	

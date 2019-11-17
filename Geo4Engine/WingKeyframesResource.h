@@ -33,6 +33,9 @@ public:
 	void ReadFromFile(string, vector<WingsKeyframe*> &, float &tstart, float &tend);
 	void InsertFromFile(string, vector<WingsKeyframe*> &, float &tstart, float &tend, float dt, bool expand);
 
+	void mergeKeyframes(vector<WingsKeyframe*> &, vector<WingsKeyframe*> &);
+
+
 	static int keyframeMapping[7];
 
 };
