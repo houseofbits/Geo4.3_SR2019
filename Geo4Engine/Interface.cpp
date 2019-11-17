@@ -350,11 +350,6 @@ bool Interface::OnGUIEvent(GUIEvent*const event) {
 	return 1;
 }
 
-bool compare_keyframes(WingsKeyframe* first, WingsKeyframe* second)
-{
-	return (first->t < second->t);
-}
-
 void Interface::sortKeyframesByTime()
 {
 	sort(keyframes.begin(), keyframes.end(), compare_keyframes);
@@ -365,7 +360,7 @@ bool Interface::getInterpolatedKeyframe(float t, WingsKeyframe& keyframe)
 	if (keyframes.size() < 2)return false;
 
 	for (int i = 0; i < keyframes.size() - 1; i++) {
-		if(keyframes[i]->t < t && keyframes[i+1]->t >= t) {
+		if(keyframes[i]->t <= t && keyframes[i+1]->t >= t) {
 			
 			float dt = (t - keyframes[i]->t) / (keyframes[i + 1]->t - keyframes[i]->t);
 

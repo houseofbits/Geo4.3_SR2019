@@ -33,9 +33,11 @@ public:
 	void ReadFromFile(string, vector<WingsKeyframe*> &, float &tstart, float &tend);
 	void InsertFromFile(string, vector<WingsKeyframe*> &, float &tstart, float &tend, float dt, bool expand);
 
-	void mergeKeyframes(vector<WingsKeyframe*> &, vector<WingsKeyframe*> &);
+	void mergeKeyframes(vector<WingsKeyframe*> &a, vector<WingsKeyframe*> &b, vector<WingsKeyframe*> &out);
 
+	bool getInterpolatedKeyframe(vector<WingsKeyframe*> &, float t, WingsKeyframe& keyframe);
 
-	static int keyframeMapping[7];
+	static int keyframeMappingOut[7];
+	static int keyframeMappingIn[7];
 
 };

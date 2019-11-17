@@ -2,7 +2,7 @@
 #include "Geo4.h"
 
 
-int WingKeyframesResource::keyframeMapping[] = {
+int WingKeyframesResource::keyframeMappingOut[] = {
 		0,	//S1
 		1,	//S2
 		2,	//A1L
@@ -11,6 +11,15 @@ int WingKeyframesResource::keyframeMapping[] = {
 		5,	//A2L
 		6	//A2R
 	};
+int WingKeyframesResource::keyframeMappingIn[] = {
+		0,	//S1
+		1,	//S2
+		2,	//A1L
+		3,	//A1R
+		4,	//S3
+		5,	//A2L
+		6	//A2R
+};
 
 WingKeyframesResource::WingKeyframesResource()
 {
@@ -30,9 +39,9 @@ void WingKeyframesResource::SaveToFile(string name, vector<WingsKeyframe*> & key
 		for (int w = 0; w < 12; w++) {
 			for (int c = 0; c < 7; c++) {
 				data.keyframes[k].t = keyframes[k]->t;
-				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].g = keyframes[k]->colors[w][c].x;
-				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].r = keyframes[k]->colors[w][c].y;
-				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMapping[c]].b = keyframes[k]->colors[w][c].z;
+				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMappingOut[c]].g = keyframes[k]->colors[w][c].x;
+				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMappingOut[c]].r = keyframes[k]->colors[w][c].y;
+				data.keyframes[k].data[w].colors[WingKeyframesResource::keyframeMappingOut[c]].b = keyframes[k]->colors[w][c].z;
 			}
 		}
 	}
@@ -83,9 +92,9 @@ void WingKeyframesResource::ReadFromFile(string name, vector<WingsKeyframe*> &ke
 
 		for (int w = 0; w < 12; w++) {
 			for (int c = 0; c < 7; c++) {
-				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].x = data.keyframes[k].data[w].colors[c].g;
-				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].y = data.keyframes[k].data[w].colors[c].r;
-				kf->colors[w][WingKeyframesResource::keyframeMapping[c]].z = data.keyframes[k].data[w].colors[c].b;
+				kf->colors[w][WingKeyframesResource::keyframeMappingIn[c]].x = data.keyframes[k].data[w].colors[c].g;
+				kf->colors[w][WingKeyframesResource::keyframeMappingIn[c]].y = data.keyframes[k].data[w].colors[c].r;
+				kf->colors[w][WingKeyframesResource::keyframeMappingIn[c]].z = data.keyframes[k].data[w].colors[c].b;
 			}
 		}
 		keyframes.push_back(kf);
@@ -126,6 +135,8 @@ void WingKeyframesResource::InsertFromFile(string name, vector<WingsKeyframe*> &
 		tend = tend + expandBy;
 	}
 
+	vector<WingsKeyframe*> keyf;
+
 	for (unsigned int k = 0; k < data.numFrames; k++) {
 		WingsKeyframe* kf = new WingsKeyframe();
 		kf->t = data.keyframes[k].t + dt - data.tStart;
@@ -137,7 +148,70 @@ void WingKeyframesResource::InsertFromFile(string name, vector<WingsKeyframe*> &
 				kf->colors[w][c].z = data.keyframes[k].data[w].colors[c].b;
 			}
 		}
-		keyframes.push_back(kf);
+		keyf.push_back(kf);
+		//keyframes.push_back(kf);
+	}
+	
+	vector<WingsKeyframe*> keyftmp;
+
+	keyftmp.reserve(keyframes.size());
+	keyftmp.insert(keyftmp.end(), keyframes.begin(), keyframes.end());
+
+	keyframes.clear();
+	mergeKeyframes(keyftmp, keyf, keyframes);
+}
+
+void WingKeyframesResource::mergeKeyframes(vector<WingsKeyframe*> &a, vector<WingsKeyframe*> &b, vector<WingsKeyframe*> &out)
+{
+	vector<WingsKeyframe*> all;
+	all.reserve(a.size() + b.size());
+	all.insert(all.end(), a.begin(), a.end());
+	all.insert(all.end(), b.begin(), b.end());
+	sort(all.begin(), all.end(), compare_keyframes);
+
+	for (int i = 0; i < all.size(); i++)
+	{
+		WingsKeyframe kfa, kfb;
+
+		bool ab = getInterpolatedKeyframe(a, all[i]->t, kfa);
+		bool bb = getInterpolatedKeyframe(b, all[i]->t, kfb);
+
+		WingsKeyframe* kf = new WingsKeyframe();
+		kf->add(kfa);
+		kf->add(kfb);
+		//kf->mult(kfb);
+
+		kf->t = all[i]->t;
+		out.push_back(kf);
+		/*
+		cout << all[i]->t << " - "<< ab<<","<<bb<<" / "
+			<< Utils::VectorToString(kfa.colors[0][3])
+			<<" - "
+			<< Utils::VectorToString(kfb.colors[0][6])
+			<< " = "
+			<< Utils::VectorToString(kf->colors[0][6])
+			<< endl;
+		*/	
 	}
 
+//	cout << out.size() << endl;
+
+	sort(out.begin(), out.end(), compare_keyframes);
+}
+
+bool WingKeyframesResource::getInterpolatedKeyframe(vector<WingsKeyframe*> &keyframes, float t, WingsKeyframe& keyframe)
+{
+	if (keyframes.size() < 2)return false;
+
+	for (int i = 0; i < keyframes.size() - 1; i++) {
+		if (keyframes[i]->t <= t && keyframes[i + 1]->t >= t) {
+
+			float dt = (t - keyframes[i]->t) / (keyframes[i + 1]->t - keyframes[i]->t);
+
+			keyframe = keyframes[i]->getInterpolated(1.0f - dt, *keyframes[i + 1]);
+
+			return true;
+		}
+	}
+	return false;
 }

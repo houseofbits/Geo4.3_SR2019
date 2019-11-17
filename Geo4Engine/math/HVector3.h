@@ -401,15 +401,21 @@
             return Vector3( *this - ( 2 * this->dotProduct(normal) * normal ) );
         }
 
-	//! returns interpolated vector
-	//! \param other: other vector to interpolate between
-	//! \param d: value between 0.0f and 1.0f.
-	Vector3 getInterpolated(const Vector3& other, float d) const
-	{
-		float inv = 1.0f - d;
-		return Vector3(other.x*inv + x*d,	other.y*inv + y*d, other.z*inv + z*d);
-	}
-
+		//! returns interpolated vector
+		//! \param other: other vector to interpolate between
+		//! \param d: value between 0.0f and 1.0f.
+		Vector3 getInterpolated(const Vector3& other, float d) const
+		{
+			float inv = 1.0f - d;
+			return Vector3(other.x*inv + x*d,	other.y*inv + y*d, other.z*inv + z*d);
+		}
+		/*
+		string toString() {
+			return Utils::FloatToString(x) + "," +
+				Utils::FloatToString(y) + "," +
+				Utils::FloatToString(z);
+		}
+		*/
 	//##ModelId=42BA535B00FF
         static const Vector3 ZERO;
 	//##ModelId=42BA535B0104

@@ -17,8 +17,8 @@ CLASS_DECLARATION(GUIWings);
 #define A2L_ID 2
 #define A2R_ID 1
 #define S2_ID 3
-#define A3L_ID 4
-#define A3R_ID 5
+#define A3R_ID 4
+#define A3L_ID 5
 #define S3_ID 6
 
 
@@ -430,6 +430,46 @@ WingsKeyframe WingsKeyframe::getInterpolated(float td, WingsKeyframe& other)
 	}
 	k.t = t + td;
 	return k;
+}
+
+WingsKeyframe WingsKeyframe::getAddition(WingsKeyframe& other)
+{
+	WingsKeyframe k;
+	for (int i = 0; i < 12; i++) {
+		for (int a = 0; a < 7; a++) {
+			k.colors[i][a] = colors[i][a] + other.colors[i][a];
+		}
+	}
+	return k;
+}
+
+void WingsKeyframe::add(WingsKeyframe other)
+{
+	for (int i = 0; i < 12; i++) {
+		for (int a = 0; a < 7; a++) {
+			colors[i][a] = colors[i][a] + other.colors[i][a];
+		}
+	}
+}
+
+void WingsKeyframe::mult(WingsKeyframe other)
+{
+	for (int i = 0; i < 12; i++) {
+		for (int a = 0; a < 7; a++) {
+
+			float v = (colors[i][a].x + colors[i][a].y + colors[i][a].z) * 0.33f;
+
+			//colors[i][a].x = colors[i][a].x * other.colors[i][a].x;
+			//colors[i][a].y = colors[i][a].y * other.colors[i][a].y;
+			//colors[i][a].z = colors[i][a].z * other.colors[i][a].z;
+
+			if (v > 0) {
+				colors[i][a].x = v*3 * other.colors[i][a].x;
+				colors[i][a].y = v*3 * other.colors[i][a].y;
+				colors[i][a].z = v*3 * other.colors[i][a].z;
+			}
+		}
+	}
 }
 
 WingsKeyframe GUIWings::createKeyframe(float t)

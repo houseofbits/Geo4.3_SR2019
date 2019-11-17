@@ -29,9 +29,17 @@ public:
 		memcpy_s(colors, (sizeof(Vector3) * 12 * 7), c, (sizeof(Vector3) * 12 * 7));
 	}
 	WingsKeyframe getInterpolated(float t, WingsKeyframe& other);
+	WingsKeyframe getAddition(WingsKeyframe& other);
+	void add(WingsKeyframe other);
+	void mult(WingsKeyframe other);
 	float t;
 	Vector3 colors[12][7];
 };
+
+static bool compare_keyframes(WingsKeyframe* first, WingsKeyframe* second)
+{
+	return (first->t < second->t);
+}
 
 class GUIWings :
 	public GUIEntity,
